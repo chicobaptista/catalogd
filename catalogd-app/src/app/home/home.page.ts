@@ -9,7 +9,8 @@ export class HomePage {
 
   constructor() {}
 
-  itemList: Item[] = [{titulo: "Aaaahhhh", subtitulo: "Lorem ipusun quae dolores sunt"}, {titulo: "Beeeeeh", subtitulo: "Lorem ipusun quae dolores sunt"}]
+  // itemList: Item[] = []
+  itemList: Item[] = [{titulo: "Aaaahhhh", subtitulo: "Lorem ipusum quae dolores sunt"}, {titulo: "Beeeeeh", subtitulo: "Lorem ipusum quae dolores sunt"}]
 
 }
 
