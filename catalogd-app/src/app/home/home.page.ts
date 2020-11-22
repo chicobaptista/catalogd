@@ -10,14 +10,7 @@ export class HomePage {
 
   constructor(public alertController: AlertController) {}
 
-  // itemList: Item[] = []
-  itemList: Item[] = [{titulo: "Aaaahhhh", subtitulo: "Lorem ipusum quae dolores sunt"}, {titulo: "Beeeeeh", subtitulo: "Lorem ipusum quae dolores sunt"}]
-
-  addItem(titulo: String, subtitulo: String) {
-    this.itemList.push(
-      {titulo, subtitulo}
-    )
-  }
+  itemList: Item[] = [{titulo: "Nana", subtitulo:"Whats my name"}]
 
   async addItemPrompt(){
     const alert = await this.alertController.create(
@@ -27,7 +20,10 @@ export class HomePage {
           {
             name: "titulo",
             type: "text",
-            placeholder: "Nome do item"
+            placeholder: "Nome do item",
+            attributes: {
+              required: true
+            }
           },
           {
             name: "subtitulo",
@@ -50,6 +46,17 @@ export class HomePage {
       })
     await alert.present()
   }
+
+  addItem(titulo: String, subtitulo: String) {
+    this.itemList.push(
+      {titulo, subtitulo}
+    )
+  }
+
+  deleteItem(index: number){
+    this.itemList.splice(index, 1)
+  }
+
 }
 
 
