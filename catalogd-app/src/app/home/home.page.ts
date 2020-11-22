@@ -13,9 +13,9 @@ export class HomePage {
   // itemList: Item[] = []
   itemList: Item[] = [{titulo: "Aaaahhhh", subtitulo: "Lorem ipusum quae dolores sunt"}, {titulo: "Beeeeeh", subtitulo: "Lorem ipusum quae dolores sunt"}]
 
-  addItem(titulo: String) {
+  addItem(titulo: String, subtitulo: String) {
     this.itemList.push(
-      {titulo: titulo, subtitulo: "Lorem ipusum quae dolores sunt"}
+      {titulo, subtitulo}
     )
   }
 
@@ -28,6 +28,11 @@ export class HomePage {
             name: "titulo",
             type: "text",
             placeholder: "Nome do item"
+          },
+          {
+            name: "subtitulo",
+            type: "textarea",
+            placeholder: "Descrição do item"
           }
         ],
         buttons: [
@@ -38,7 +43,7 @@ export class HomePage {
           {
             text: "Confirmar",
             handler: (data) => {
-              this.addItem(data.titulo)
+              this.addItem(data.titulo, data.subtitulo)
             }
           }
         ]
