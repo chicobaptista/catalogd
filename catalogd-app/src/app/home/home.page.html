@@ -1,20 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title color="primary">
+      Catalogd!
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div>
+    <ion-list>
+      <ion-item *ngFor="let i of itemList">
+        <ion-icon name="star" slot="start" size="large" color="warning"></ion-icon>
+        <ion-label>
+          <ion-text color="primary">
+            <h2>
+              {{i.titulo}}
+            </h2>
+          </ion-text>
+          <ion-text>
+            <p>
+              {{i.subtitulo}}
+            </p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>

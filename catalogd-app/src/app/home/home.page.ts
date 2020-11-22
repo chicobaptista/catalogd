@@ -9,6 +9,12 @@ export class HomePage {
 
   constructor() {}
 
-  itemList: any[] = ["5", 5, "Beeeeh"]
+  itemList: Item[] = [{titulo: "Aaaahhhh", subtitulo: "Lorem ipusun quae dolores sunt"}, {titulo: "Beeeeeh", subtitulo: "Lorem ipusun quae dolores sunt"}]
 
+}
+
+
+interface Item {
+  titulo: String,
+  subtitulo: String
 }
