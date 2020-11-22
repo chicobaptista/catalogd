@@ -53,6 +53,27 @@ export class HomePage {
     )
   }
 
+  async deleteItemPrompt(index: number){
+    const alert = await this.alertController.create(
+      {
+        header: "Apagar item",
+        subHeader: "Você tem certeza disso?!?!",
+        buttons: [
+          {
+            text: "Melhor não...",
+            role: "cancel"
+          },
+          {
+            text: "Lol, YOLO!",
+            handler: (data) => {
+              this.deleteItem(index)
+            }
+          }
+        ]
+      })
+    await alert.present()
+  }
+
   deleteItem(index: number){
     this.itemList.splice(index, 1)
   }
