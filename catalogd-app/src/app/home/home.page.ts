@@ -57,6 +57,47 @@ export class HomePage {
     this.itemList.splice(index, 1)
   }
 
+
+  async editItemPrompt(index: number) {
+    const alert = await this.alertController.create(
+      {
+        header: "Novo item",
+        inputs: [
+          {
+            name: "titulo",
+            type: "text",
+            placeholder: "Nome do item",
+            attributes: {
+              required: true
+            }
+          },
+          {
+            name: "subtitulo",
+            type: "textarea",
+            placeholder: "Descrição do item"
+          }
+        ],
+        buttons: [
+          {
+            text: "Cancelar",
+            role: "cancel"
+          },
+          {
+            text: "Confirmar",
+            handler: (data) => {
+              this.editItem(index, {titulo: data.titulo as String, subtitulo: data.subtitulo as String})
+            }
+          }
+        ]
+      })
+    await alert.present()
+  }
+
+  editItem(index: number, item: Item){
+    this.itemList[index] = item
+
+  }
+
 }
 
 

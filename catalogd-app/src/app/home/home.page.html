@@ -11,17 +11,19 @@
     <ion-list *ngIf="itemList.length>0">
       <ion-item-sliding *ngFor="let item of itemList, let i = index">
         <ion-item-options side="end">
+          <ion-item-option (click)=editItemPrompt(i)>
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-item-option>
           <ion-item-option color="danger" (click)="deleteItem(i)">
             <ion-icon name="trash-outline"></ion-icon>
           </ion-item-option>
-
         </ion-item-options>
         <ion-item>
           <ion-icon name="star" slot="start" size="large" color="warning"></ion-icon>
           <ion-label>
             <ion-text color="primary">
               <h2>
-                {{i}}: {{item.titulo}}
+                {{item.titulo}}
               </h2>
             </ion-text>
             <ion-text>
