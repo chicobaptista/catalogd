@@ -35,24 +35,17 @@ describe('ItemListPage', () => {
     expect(header.textContent).toEqual(component.title);
   });
 
-});
+  describe('when item list is empty', () => {
+    const emptyList = [];
+    it(`should display empty state title and subtitle`, () => {
+      component.itemList = emptyList;
+      const pageDe: DebugElement = fixture.debugElement;
+      const contentDe = pageDe.query(By.css('ion-content'));
+      const content: HTMLElement = contentDe.nativeElement;
+      expect(content.textContent).toContain(component.emptyState.title);
+      expect(content.textContent).toContain(component.emptyState.subtitle);
 
-describe('ItemListPage', () => {
-  let component: ItemListPage;
-  let fixture: ComponentFixture<ItemListPage>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ItemListPage ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(ItemListPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
-
-  it('should display empty state if no item list is empty', () => {
-    expect(component).toBeTruthy();
+    });
   });
+
 });

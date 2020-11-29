@@ -4,6 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+  <ng-container *ngIf="itemList.length>0; else empty_state">
+  </ng-container>
+  <ng-template #empty_state>
+    <h1 class="ion-text-center">
+      {{emptyState.title}}
+    </h1>
+    <p class="ion-text-center">
+      {{emptyState.subtitle}}
+    </p>
+  </ng-template>
 </ion-content>
