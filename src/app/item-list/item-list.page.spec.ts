@@ -1,0 +1,58 @@
+import { DebugElement } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { IonicModule } from '@ionic/angular';
+
+import { ItemListPage } from './item-list.page';
+
+describe('ItemListPage', () => {
+  let component: ItemListPage;
+  let fixture: ComponentFixture<ItemListPage>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ItemListPage ],
+      imports: [IonicModule.forRoot()]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(ItemListPage);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it(`should have 'Collection' as title`, () => {
+    expect(component.title).toEqual('Collection');
+  });
+
+  it(`should display the title on title bar`, () => {
+    const pageDe: DebugElement = fixture.debugElement;
+    const headerDe = pageDe.query(By.css('ion-header'));
+    const header: HTMLElement = headerDe.nativeElement;
+    expect(header.textContent).toEqual(component.title);
+  });
+
+});
+
+describe('ItemListPage', () => {
+  let component: ItemListPage;
+  let fixture: ComponentFixture<ItemListPage>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ItemListPage ],
+      imports: [IonicModule.forRoot()]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(ItemListPage);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
+
+  it('should display empty state if no item list is empty', () => {
+    expect(component).toBeTruthy();
+  });
+});
