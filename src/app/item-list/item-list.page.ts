@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Item } from '../models/item';
 
 @Component({
@@ -7,11 +8,11 @@ import { Item } from '../models/item';
   styleUrls: ['./item-list.page.scss']
 })
 export class ItemListPage implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   title = 'Collection';
 
-  itemList: Item[] = [{ title: 'test1', subtitle: 'testing title' }];
+  itemList: Item[] = [{ id: '1', title: 'test1', subtitle: 'testing title' }];
 
   emptyState = {
     title: 'Nothing to see here',
@@ -20,4 +21,8 @@ export class ItemListPage implements OnInit {
   };
 
   ngOnInit() {}
+
+  navigate(id: string) {
+    this.router.navigate([`/item-details/${id}`]);
+  }
 }

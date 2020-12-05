@@ -1,4 +1,5 @@
 export class Item {
-    title: string;
-    subtitle: string;
+  id: string;
+  title: string;
+  subtitle: string;
 }

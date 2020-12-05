@@ -12,7 +12,7 @@ describe('ItemListPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItemListPage ],
+      declarations: [ItemListPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
@@ -51,7 +51,9 @@ describe('ItemListPage', () => {
   });
 
   describe(`when item list is not empty`, () => {
-    const itemList: Item[] = [{ title: 'Test 1', subtitle: 'Testing item' }];
+    const itemList: Item[] = [
+      { id: '1', title: 'Test 1', subtitle: 'Testing item' }
+    ];
     it(`should display a list of item templates`, () => {
       component.itemList = itemList;
       fixture.detectChanges();
@@ -70,7 +72,7 @@ describe('ItemListPage', () => {
       const contentDe = pageDe.query(By.css('ion-content'));
       const itemDe = contentDe.queryAll(By.css('colectionItem'));
       expect(component.itemList.length > 0);
-      expect (itemDe.length === component.itemList.length);
+      expect(itemDe.length === component.itemList.length);
     });
   });
 });
