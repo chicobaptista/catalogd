@@ -6,6 +6,17 @@
 
 <ion-content class="ion-padding">
   <ng-container *ngIf="itemList.length>0; else empty_state">
+    <ion-list>
+      <ion-item *ngFor="let item of itemList" class="collectionItem">
+        <ion-icon name="star" slot="start" color="warning"></ion-icon>
+        <ion-label color="primary">
+          <h3>{{item.title}}</h3>
+        </ion-label>
+        <ion-label>
+          <p>{{item.subtitle}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </ng-container>
   <ng-template #empty_state>
     <ion-img [src]="emptyState.imgSrc"></ion-img>
@@ -16,4 +27,5 @@
       {{emptyState.subtitle}}
     </p>
   </ng-template>
+
 </ion-content>
