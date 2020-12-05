@@ -8,6 +8,7 @@
   <ng-container *ngIf="itemList.length>0; else empty_state">
   </ng-container>
   <ng-template #empty_state>
+    <ion-img [src]="emptyState.imgSrc"></ion-img>
     <h1 class="ion-text-center">
       {{emptyState.title}}
     </h1>

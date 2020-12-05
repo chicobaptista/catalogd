@@ -15,7 +15,8 @@ export class ItemListPage implements OnInit {
 
   emptyState = {
     title: 'Nothing to see here',
-    subtitle: `You don't have any items on your collection yet!`
+    subtitle: `You don't have any items on your collection yet!`,
+    imgSrc: 'assets/icon/folder-open-outline.svg'
   };
 
   ngOnInit() {
