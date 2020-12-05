@@ -8,13 +8,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: 'item-list',
-    loadChildren: () => import('./item-list/item-list.module').then( m => m.ItemListPageModule)
-  },
+    loadChildren: () =>
+      import('./item-list/item-list.module').then((m) => m.ItemListPageModule)
+  }
 ];
 
 @NgModule({
@@ -23,4 +20,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
