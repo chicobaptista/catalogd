@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Item } from '../models/item';
+import { ItemService } from '../services/item.service';
 
 @Component({
   selector: 'app-item-details',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemDetailsPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private itemService: ItemService
+    ) { }
+  item: Item;
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.item = this.itemService.getItemById(params.get('id'));
+    });
   }
 
 }

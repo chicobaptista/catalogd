@@ -9,11 +9,11 @@ export class ItemService {
 
   itemList: Item[] = [{ id: '1', title: 'test1', subtitle: 'testing title' }];
 
-  public getItemList() {
+  public getItemList(): Item[] {
     return this.itemList;
   }
 
-  public getItemById(id: string) {
+  public getItemById(id: string): Item {
     return this.itemList.find(i => i.id === id);
   }
 }
