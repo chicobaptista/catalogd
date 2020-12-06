@@ -1,6 +1,7 @@
 import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { Item } from '../models/item';
 
@@ -9,11 +10,13 @@ import { ItemListPage } from './item-list.page';
 describe('ItemListPage', () => {
   let component: ItemListPage;
   let fixture: ComponentFixture<ItemListPage>;
+  const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ItemListPage],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
+      providers: [{ provide: Router, useValue: routerSpy }]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ItemListPage);
