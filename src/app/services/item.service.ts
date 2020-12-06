@@ -12,4 +12,8 @@ export class ItemService {
   public getItemList() {
     return this.itemList;
   }
+
+  public getItemById(id: string) {
+    return this.itemList.find(i => i.id === id);
+  }
 }
