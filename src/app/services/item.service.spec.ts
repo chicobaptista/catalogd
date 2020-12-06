@@ -5,7 +5,8 @@ import { ItemService } from './item.service';
 
 describe('ItemService', () => {
   let service: ItemService;
-  const itemList: Item[] = [{ id: '1', title: 'test1', subtitle: 'testing title' }];
+  const testItem: Item = { id: '1', title: 'test1', subtitle: 'testing title', additionalFields: [] };
+  const itemList: Item[] = [testItem];
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -24,7 +25,6 @@ describe('ItemService', () => {
   });
 
   describe(`when calling getItemById method`, () => {
-    const testItem: Item = { id: '1', title: 'test1', subtitle: 'testing title' };
     it(`should return item of that Id`, () => {
       service.itemList = itemList;
       expect(service.getItemById('1')).toEqual(testItem);

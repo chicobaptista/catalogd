@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ActivatedRouteStub } from 'src/testing/activated-route.stub';
 import { Item } from '../models/item';
@@ -18,7 +19,7 @@ describe('ItemDetailsPage', () => {
     activatedRoute.setParamMap({id: itemId});
     itemServiceStub = {
       getItemById(id: string): Item{
-        return { id: itemId, title: 'test1', subtitle: 'testing title' };
+        return { id: itemId, title: 'test1', subtitle: 'testing title', additionalFields: [] };
       }
     };
     TestBed.configureTestingModule({

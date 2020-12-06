@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { Item } from '../models/item';
+import { ItemService } from '../services/item.service';
 
 import { ItemListPage } from './item-list.page';
 
@@ -11,12 +12,21 @@ describe('ItemListPage', () => {
   let component: ItemListPage;
   let fixture: ComponentFixture<ItemListPage>;
   const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
+  let itemServiceStub: Partial<ItemService>;
 
   beforeEach(async(() => {
+    itemServiceStub = {
+      getItemList(): Item[] {
+        return [{ id: '1', title: 'test1', subtitle: 'testing title', additionalFields: [] }];
+      }
+    };
     TestBed.configureTestingModule({
       declarations: [ItemListPage],
       imports: [IonicModule.forRoot()],
-      providers: [{ provide: Router, useValue: routerSpy }]
+      providers: [
+        { provide: Router, useValue: routerSpy },
+        {provide: ItemService, useValue: itemServiceStub}
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ItemListPage);
@@ -54,11 +64,7 @@ describe('ItemListPage', () => {
   });
 
   describe(`when item list is not empty`, () => {
-    const itemList: Item[] = [
-      { id: '1', title: 'Test 1', subtitle: 'Testing item' }
-    ];
     it(`should display a list of item templates`, () => {
-      component.itemList = itemList;
       fixture.detectChanges();
       const pageDe: DebugElement = fixture.debugElement;
       const contentDe = pageDe.query(By.css('ion-content'));
@@ -69,7 +75,6 @@ describe('ItemListPage', () => {
     });
 
     it(`should display an item template for each item in the list`, () => {
-      component.itemList = itemList;
       fixture.detectChanges();
       const pageDe: DebugElement = fixture.debugElement;
       const contentDe = pageDe.query(By.css('ion-content'));
