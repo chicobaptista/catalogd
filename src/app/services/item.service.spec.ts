@@ -1,11 +1,13 @@
 import { TestBed } from '@angular/core/testing';
+import { ItemFactory } from 'src/testing/itemFactory';
 import { Item } from '../models/item';
 
 import { ItemService } from './item.service';
 
 describe('ItemService', () => {
   let service: ItemService;
-  const testItem: Item = { id: '1', title: 'test1', subtitle: 'testing title', additionalFields: [] };
+  const testItemFactory = new ItemFactory;
+  const testItem: Item = testItemFactory.generateItem();
   const itemList: Item[] = [testItem];
 
   beforeEach(() => {

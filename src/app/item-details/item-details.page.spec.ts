@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ActivatedRouteStub } from 'src/testing/activated-route.stub';
+import { ItemFactory } from 'src/testing/itemFactory';
 import { Item } from '../models/item';
 import { ItemService } from '../services/item.service';
 
@@ -13,13 +14,14 @@ describe('ItemDetailsPage', () => {
   let fixture: ComponentFixture<ItemDetailsPage>;
   const activatedRoute: ActivatedRouteStub = new ActivatedRouteStub();
   let itemServiceStub: Partial<ItemService>;
+  const testItemFactory = new ItemFactory();
   const itemId = '1';
 
   beforeEach(async(() => {
     activatedRoute.setParamMap({id: itemId});
     itemServiceStub = {
       getItemById(id: string): Item{
-        return { id: itemId, title: 'test1', subtitle: 'testing title', additionalFields: [] };
+        return testItemFactory.generateItem(itemId);
       }
     };
     TestBed.configureTestingModule({

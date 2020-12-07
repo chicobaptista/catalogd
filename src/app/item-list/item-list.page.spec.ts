@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { ItemFactory } from 'src/testing/itemFactory';
 import { Item } from '../models/item';
 import { ItemService } from '../services/item.service';
 
@@ -13,11 +14,12 @@ describe('ItemListPage', () => {
   let fixture: ComponentFixture<ItemListPage>;
   const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
   let itemServiceStub: Partial<ItemService>;
+  const testItemFactory = new ItemFactory;
 
   beforeEach(async(() => {
     itemServiceStub = {
       getItemList(): Item[] {
-        return [{ id: '1', title: 'test1', subtitle: 'testing title', additionalFields: [] }];
+        return [testItemFactory.generateItem()];
       }
     };
     TestBed.configureTestingModule({
