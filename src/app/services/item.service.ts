@@ -7,7 +7,7 @@ import { Item } from '../models/item';
 export class ItemService {
   constructor() {}
 
-  itemList: Item[] = [{ id: '1', title: 'test1', subtitle: 'testing title', additionalFields: [{name: 'Origin', value: 'Bohemia'}] }];
+  itemList: Item[] = [{ id: '1', title: 'test1', subtitle: 'testing title', additionalFields: [{name: 'Origin', value: 'Bohemia'}], image: 'assets/icon/folder-open-outline.svg' }];
 
   public getItemList(): Item[] {
     return this.itemList;

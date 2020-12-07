@@ -2,6 +2,7 @@ export class Item {
   id: string;
   title: string;
   subtitle: string;
+  image: string;
   additionalFields: ItemField[];
 }
 
