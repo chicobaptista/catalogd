@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>itemDetails</ion-title>
+    <ion-title>{{item.title}} Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <div class="ion-text-center">
+    <ion-img [src]="item.image"></ion-img>
+    <h1>{{item.title}}</h1>
+    <h3>{{item.subtitle}}</h3>
+  </div>
+  <ion-item *ngFor="let field of item.additionalFields">
+    <ion-label slot="start">
+      {{field.name}}
+    </ion-label>
+    <ion-label>
+      {{field.value}}
+    </ion-label>
+  </ion-item>
+
 
 </ion-content>
