@@ -5,19 +5,13 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="ion-text-center">
-    <ion-img [src]="item.image"></ion-img>
-    <h1>{{item.title}}</h1>
-    <h3>{{item.subtitle}}</h3>
-  </div>
-  <ion-item *ngFor="let field of item.additionalFields">
-    <ion-note slot="start" class="name-label">
-      {{field.name}}
-    </ion-note>
-    <ion-label  class="value-label">
-      {{field.value}}
-    </ion-label>
+  <form [formGroup]="itemForm" class="ion-text-center">
+    <ion-img [src]="item.image" class="item-image"></ion-img>
+    <ion-input formControlName="title" [readonly]="!isEditing" class="item-title"></ion-input>
+    <ion-input formControlName="subtitle" [readonly]="!isEditing" class="item-subtitle"></ion-input>
+  <ion-item *ngFor="let field of item.additionalFields" class="item-additionalField">
+    <ion-input [formControlName] = "field.name" [readonly]="!isEditing" class="label-name"></ion-input>
+    <ion-input [formControlName] = "field.value" [readonly]="!isEditing" class="label-value"></ion-input>
   </ion-item>
-
-
+</form>
 </ion-content>

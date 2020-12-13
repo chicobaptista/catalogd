@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -11,9 +11,12 @@ import { ItemDetailsPage } from './item-details.page';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     IonicModule,
-    ItemDetailsPageRoutingModule
+    ItemDetailsPageRoutingModule,
+  ],
+  providers: [
+    FormBuilder
   ],
   declarations: [ItemDetailsPage]
 })

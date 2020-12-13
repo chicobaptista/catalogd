@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
@@ -29,7 +30,8 @@ describe('ItemDetailsPage', () => {
       imports: [IonicModule.forRoot()],
       providers: [
         {provide: ActivatedRoute, useValue: activatedRoute},
-        {provide: ItemService, useValue: itemServiceStub}
+        {provide: ItemService, useValue: itemServiceStub},
+        FormBuilder
       ]
     }).compileComponents();
     fixture = TestBed.createComponent(ItemDetailsPage);
