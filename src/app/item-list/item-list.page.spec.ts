@@ -1,19 +1,34 @@
 import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { ItemFactory } from 'src/testing/itemFactory';
 import { Item } from '../models/item';
+import { ItemService } from '../services/item.service';
 
 import { ItemListPage } from './item-list.page';
 
 describe('ItemListPage', () => {
   let component: ItemListPage;
   let fixture: ComponentFixture<ItemListPage>;
+  const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
+  let itemServiceStub: Partial<ItemService>;
+  const testItemFactory = new ItemFactory;
 
   beforeEach(async(() => {
+    itemServiceStub = {
+      getItemList(): Item[] {
+        return [testItemFactory.generateItem()];
+      }
+    };
     TestBed.configureTestingModule({
-      declarations: [ ItemListPage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [ItemListPage],
+      imports: [IonicModule.forRoot()],
+      providers: [
+        { provide: Router, useValue: routerSpy },
+        {provide: ItemService, useValue: itemServiceStub}
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ItemListPage);
@@ -51,9 +66,7 @@ describe('ItemListPage', () => {
   });
 
   describe(`when item list is not empty`, () => {
-    const itemList: Item[] = [{ title: 'Test 1', subtitle: 'Testing item' }];
     it(`should display a list of item templates`, () => {
-      component.itemList = itemList;
       fixture.detectChanges();
       const pageDe: DebugElement = fixture.debugElement;
       const contentDe = pageDe.query(By.css('ion-content'));
@@ -64,13 +77,12 @@ describe('ItemListPage', () => {
     });
 
     it(`should display an item template for each item in the list`, () => {
-      component.itemList = itemList;
       fixture.detectChanges();
       const pageDe: DebugElement = fixture.debugElement;
       const contentDe = pageDe.query(By.css('ion-content'));
       const itemDe = contentDe.queryAll(By.css('colectionItem'));
       expect(component.itemList.length > 0);
-      expect (itemDe.length === component.itemList.length);
+      expect(itemDe.length === component.itemList.length);
     });
   });
 });

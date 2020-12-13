@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Item } from '../models/item';
+import { ItemService } from '../services/item.service';
 
 @Component({
   selector: 'app-item-list',
@@ -7,11 +9,11 @@ import { Item } from '../models/item';
   styleUrls: ['./item-list.page.scss']
 })
 export class ItemListPage implements OnInit {
-  constructor() {}
+  constructor(private router: Router, private itemService: ItemService) {}
 
   title = 'Collection';
 
-  itemList: Item[] = [{ title: 'test1', subtitle: 'testing title' }];
+  itemList: Item[];
 
   emptyState = {
     title: 'Nothing to see here',
@@ -19,5 +21,11 @@ export class ItemListPage implements OnInit {
     imgSrc: 'assets/icon/folder-open-outline.svg'
   };
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.itemList =  this.itemService.getItemList();
+  }
+
+  navigate(id: string) {
+    this.router.navigate([`/item-details/${id}`]);
+  }
 }

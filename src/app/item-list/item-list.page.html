@@ -7,7 +7,11 @@
 <ion-content class="ion-padding">
   <ng-container *ngIf="itemList.length>0; else empty_state">
     <ion-list>
-      <ion-item *ngFor="let item of itemList" class="collectionItem">
+      <ion-item
+        *ngFor="let item of itemList"
+        class="collectionItem"
+        (click)="navigate(item.id)"
+      >
         <ion-icon name="star" slot="start" color="warning"></ion-icon>
         <ion-label color="primary">
           <h3>{{item.title}}</h3>
@@ -20,12 +24,7 @@
   </ng-container>
   <ng-template #empty_state>
     <ion-img [src]="emptyState.imgSrc"></ion-img>
-    <h1 class="ion-text-center">
-      {{emptyState.title}}
-    </h1>
-    <p class="ion-text-center">
-      {{emptyState.subtitle}}
-    </p>
+    <h1 class="ion-text-center">{{emptyState.title}}</h1>
+    <p class="ion-text-center">{{emptyState.subtitle}}</p>
   </ng-template>
-
 </ion-content>
