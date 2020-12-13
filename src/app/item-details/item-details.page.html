@@ -11,10 +11,10 @@
     <h3>{{item.subtitle}}</h3>
   </div>
   <ion-item *ngFor="let field of item.additionalFields">
-    <ion-label slot="start">
+    <ion-note slot="start" class="name-label">
       {{field.name}}
-    </ion-label>
-    <ion-label>
+    </ion-note>
+    <ion-label  class="value-label">
       {{field.value}}
     </ion-label>
   </ion-item>
